@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
-
 
 namespace StringCalculator
 {
@@ -16,41 +14,54 @@ namespace StringCalculator
             }
             if (int.TryParse(input, out var numberForTryParse))
             {
-                if (int.Parse(input) < 0)
+                if (numberForTryParse < 0)
                 {
                     throw new ArithmeticException("Negatives not allowed: " + input);
                 }
-                return int.Parse(input);
+                return numberForTryParse;
             }
 
             int[] arrayFromString;
+            char[] delimiterChars = {',','\n'};
             if (input.StartsWith("//"))
             {
-                List<char> inputAsCharList = new List<char>();
-                inputAsCharList.AddRange(input);
-                var firstBracket = input.IndexOf("[");
-                
+                var subInput = "";
+                var delimiter = "";
+                var firstBracket = input.IndexOf("[", StringComparison.Ordinal);
                 if (firstBracket == -1)
                 {
-                    var subInput = input.Substring(4);
-                    var delimiter = input.Substring(2, 1);
-                    arrayFromString = subInput.Split(delimiter).Select(n => Convert.ToInt32(n)).ToArray();
+                    subInput = input.Substring(4);
+                    delimiter = input.Substring(2, 1);
                 }
                 else
                 {
-                     var secondBracket = input.IndexOf("]");
-                     var delimiter = input.Substring(firstBracket+1, (secondBracket - firstBracket -1));
-                    
-                     var dataStartIndex = input.IndexOf("\n");
-                     var subInput = input.Substring(dataStartIndex);
-                                    
-                     arrayFromString = subInput.Split(delimiter).Select(n => Convert.ToInt32(n)).ToArray();
+                    var data = input.ToList();
+                    if (data.Count(x => x == '[') > 1)
+                    {
+                        // I figured out you can split by any and multiple specified characters so I just did it in one go
+                        var resultOfBracketAndSlashSplit = input.Split('[',']','/'); // = *%\n1*2%3
+                        var resultOfSplitToStr = string.Join("", resultOfBracketAndSlashSplit); // makes into string
+                        var splitDelimiterFromData = resultOfSplitToStr.Split('\n'); // *% and 1*2%3
+                        var delimiterAsString = splitDelimiterFromData[0]; // gets only *%
+                        var dataStartIndex = input.IndexOf("\n", StringComparison.Ordinal);
+                        subInput = input.Substring(dataStartIndex); // 1*2%3
+                        // subInput = splitDelimiterFromData[1];
+                        delimiterChars = delimiterAsString.ToCharArray();
+                        arrayFromString = subInput.Split(delimiterChars,StringSplitOptions.RemoveEmptyEntries).Select(n => Convert.ToInt32(n)).ToArray();
+                    }
+                    else
+                    {
+                        var secondBracket = input.IndexOf("]", StringComparison.Ordinal);
+                        delimiter = input.Substring(firstBracket+1, (secondBracket - firstBracket -1));
+                        var dataStartIndex = input.IndexOf("\n", StringComparison.Ordinal);
+                        subInput = input.Substring(dataStartIndex);
+                        arrayFromString = subInput.Split(delimiter).Select(n => Convert.ToInt32(n)).ToArray();
+                    }
                 }
-               
+                arrayFromString = subInput.Split(delimiter).Select(n => Convert.ToInt32(n)).ToArray();
             }
             else
             {
-                char[] delimiterChars = {',','\n'};
                 arrayFromString = input.Split(delimiterChars).Select(n => Convert.ToInt32(n)).ToArray();
             }
             var negativeNumbers = new List<int>();

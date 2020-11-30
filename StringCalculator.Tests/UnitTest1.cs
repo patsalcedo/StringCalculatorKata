@@ -5,6 +5,13 @@ namespace StringCalculator.Tests
 {
     public class UnitTest1
     {
+        // private readonly Calculator _calculator;
+        //
+        // public CalculatorTest
+        // {
+        //     
+        // }
+        
         [Fact]
         public void Return_Zero_To_Empty_String()
         {
@@ -127,8 +134,19 @@ namespace StringCalculator.Tests
             var actual = calculator.Add("//[***]\n1***2***3");
         
             // THEN
-            // var ex = Assert.Throws<ArithmeticException>(() => actual.)
-            // Assert.Equal(3, actual);
+            Assert.Equal(6, actual);
+        }
+        
+        [Fact]
+        public void Allow_Multiple_Delimiters()
+        {
+            // GIVEN
+            var calculator = new Calculator();
+            
+            // WHEN
+            var actual = calculator.Add("//[*][%]\n1*2%3");
+        
+            // THEN
             Assert.Equal(6, actual);
         }
     }

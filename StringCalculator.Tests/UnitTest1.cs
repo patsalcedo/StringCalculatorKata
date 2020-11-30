@@ -162,5 +162,18 @@ namespace StringCalculator.Tests
             // THEN
             Assert.Equal(10, actual);
         }
+        
+        [Fact]
+        public void Allow_Delimiters_With_Numbers_In_Them()
+        {
+            // GIVEN
+            var calculator = new Calculator();
+            
+            // WHEN
+            var actual = calculator.Add("//[*1*][%]\n1*1*2%3");
+        
+            // THEN
+            Assert.Equal(6, actual);
+        }
     }
 }

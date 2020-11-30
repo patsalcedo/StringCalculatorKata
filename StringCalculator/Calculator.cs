@@ -6,6 +6,7 @@ namespace StringCalculator
 {
     public class Calculator
     {
+        private const string CustomDelimiterSignifier = "//";
         public int Add(string input)
         {
             if (string.IsNullOrEmpty(input))
@@ -16,23 +17,23 @@ namespace StringCalculator
             {
                 if (inputAsNumber < 0)
                 {
-                    throw new ArithmeticException("Negatives not allowed: " + input);
+                    ThrowsNegativeNumberException(input);
                 }
                 return inputAsNumber;
             }
 
             int[] arrayFromString;
             char[] defaultDelimiterChars = {',','\n'};
-            if (input.StartsWith("//"))
+            if (input.StartsWith(CustomDelimiterSignifier))
             {
-                var subInput = "";
+                var delimitersAndNumbersAsStrings = "";
                 var delimiter = "";
-                var firstBracket = input.IndexOf("[", StringComparison.Ordinal);
-                if (firstBracket == -1) // no square brackets
+                var firstSquareBracket = input.IndexOf("[", StringComparison.Ordinal);
+                if (firstSquareBracket == -1) // no square brackets
                 {
-                    subInput = input.Substring(4);
+                    delimitersAndNumbersAsStrings = input.Substring(4); // = //;\n1;2
                     delimiter = input.Substring(2, 1);
-                    arrayFromString = subInput.Split(delimiter).Select(n => Convert.ToInt32(n)).ToArray();
+                    arrayFromString = GetIntArrayFromString(delimitersAndNumbersAsStrings, delimiter);
                 }
                 else
                 {
@@ -43,28 +44,26 @@ namespace StringCalculator
                         var resultOfSplitToStr = string.Join("", resultOfBracketAndSlashSplit);
                         var splitDelimiterFromData = resultOfSplitToStr.Split('\n');
                         var delimiterAsString = splitDelimiterFromData[0];
-                        // var dataStartIndex = input.IndexOf("\n", StringComparison.Ordinal);
-                        // subInput = input.Substring(dataStartIndex); // 1*2%3
-                        // subInput = splitDelimiterFromData[1];
-                        // defaultDelimiterChars = delimiterAsString.ToCharArray();
-                        arrayFromString = splitDelimiterFromData[1]
-                            .Split(delimiterAsString.ToCharArray(),StringSplitOptions.RemoveEmptyEntries)
-                            .Select(n => Convert.ToInt32(n)).ToArray();
+                        delimitersAndNumbersAsStrings = splitDelimiterFromData[1];
+                        
+                        // arrayFromString = splitDelimiterFromData[1]
+                        //     .Split(delimiterAsString.ToCharArray(),StringSplitOptions.RemoveEmptyEntries)
+                        //     .Select(n => Convert.ToInt32(n)).ToArray();
+                        arrayFromString = GetIntArrayFromCharArrayDelimiter(delimitersAndNumbersAsStrings, delimiterAsString.ToCharArray());
                     }
                     else
                     {
                         var secondBracket = input.IndexOf("]", StringComparison.Ordinal);
-                        delimiter = input.Substring(firstBracket+1, (secondBracket - firstBracket -1));
+                        delimiter = input.Substring(firstSquareBracket+1, (secondBracket - firstSquareBracket -1));
                         var dataStartIndex = input.IndexOf("\n", StringComparison.Ordinal);
-                        subInput = input.Substring(dataStartIndex);
-                        arrayFromString = subInput.Split(delimiter).Select(n => Convert.ToInt32(n)).ToArray();
+                        delimitersAndNumbersAsStrings = input.Substring(dataStartIndex);
+                        arrayFromString = GetIntArrayFromString(delimitersAndNumbersAsStrings, delimiter);
                     }
                 }
-                // arrayFromString = subInput.Split(delimiter).Select(n => Convert.ToInt32(n)).ToArray();
             }
             else
             {
-                arrayFromString = input.Split(defaultDelimiterChars).Select(n => Convert.ToInt32(n)).ToArray();
+                arrayFromString = GetIntArrayFromCharArrayDelimiter(input, defaultDelimiterChars);
             }
             var negativeNumbers = new List<int>();
             var validNumbers = new List<int>();
@@ -87,6 +86,21 @@ namespace StringCalculator
 
             validNumbers.RemoveAll(n => n >= 1000);
             return validNumbers.Sum();
+        }
+
+        private static int[] GetIntArrayFromCharArrayDelimiter(string input, char[] defaultDelimiterChars)
+        {
+            return input.Split(defaultDelimiterChars).Select(n => Convert.ToInt32(n)).ToArray();
+        }
+
+        private static int[] GetIntArrayFromString(string delimitersAndNumbersAsStrings, string delimiter)
+        {
+            return delimitersAndNumbersAsStrings.Split(delimiter).Select(n => Convert.ToInt32(n)).ToArray();
+        }
+
+        private static void ThrowsNegativeNumberException(string input)
+        {
+            throw new ArithmeticException("Negatives not allowed: " + input);
         }
     }
 }

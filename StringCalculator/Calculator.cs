@@ -12,42 +12,44 @@ namespace StringCalculator
             {
                 return 0;
             }
-            if (int.TryParse(input, out var numberForTryParse))
+            if (int.TryParse(input, out var inputAsNumber))
             {
-                if (numberForTryParse < 0)
+                if (inputAsNumber < 0)
                 {
                     throw new ArithmeticException("Negatives not allowed: " + input);
                 }
-                return numberForTryParse;
+                return inputAsNumber;
             }
 
             int[] arrayFromString;
-            char[] delimiterChars = {',','\n'};
+            char[] defaultDelimiterChars = {',','\n'};
             if (input.StartsWith("//"))
             {
                 var subInput = "";
                 var delimiter = "";
                 var firstBracket = input.IndexOf("[", StringComparison.Ordinal);
-                if (firstBracket == -1)
+                if (firstBracket == -1) // no square brackets
                 {
                     subInput = input.Substring(4);
                     delimiter = input.Substring(2, 1);
+                    arrayFromString = subInput.Split(delimiter).Select(n => Convert.ToInt32(n)).ToArray();
                 }
                 else
                 {
                     var data = input.ToList();
-                    if (data.Count(x => x == '[') > 1)
+                    if (data.Count(x => x == '[') > 1) // if there is more than one delimiter
                     {
-                        // I figured out you can split by any and multiple specified characters so I just did it in one go
-                        var resultOfBracketAndSlashSplit = input.Split('[',']','/'); // = *%\n1*2%3
-                        var resultOfSplitToStr = string.Join("", resultOfBracketAndSlashSplit); // makes into string
-                        var splitDelimiterFromData = resultOfSplitToStr.Split('\n'); // *% and 1*2%3
-                        var delimiterAsString = splitDelimiterFromData[0]; // gets only *%
-                        var dataStartIndex = input.IndexOf("\n", StringComparison.Ordinal);
-                        subInput = input.Substring(dataStartIndex); // 1*2%3
+                        var resultOfBracketAndSlashSplit = input.Split('[',']','/');
+                        var resultOfSplitToStr = string.Join("", resultOfBracketAndSlashSplit);
+                        var splitDelimiterFromData = resultOfSplitToStr.Split('\n');
+                        var delimiterAsString = splitDelimiterFromData[0];
+                        // var dataStartIndex = input.IndexOf("\n", StringComparison.Ordinal);
+                        // subInput = input.Substring(dataStartIndex); // 1*2%3
                         // subInput = splitDelimiterFromData[1];
-                        delimiterChars = delimiterAsString.ToCharArray();
-                        arrayFromString = subInput.Split(delimiterChars,StringSplitOptions.RemoveEmptyEntries).Select(n => Convert.ToInt32(n)).ToArray();
+                        // defaultDelimiterChars = delimiterAsString.ToCharArray();
+                        arrayFromString = splitDelimiterFromData[1]
+                            .Split(delimiterAsString.ToCharArray(),StringSplitOptions.RemoveEmptyEntries)
+                            .Select(n => Convert.ToInt32(n)).ToArray();
                     }
                     else
                     {
@@ -58,11 +60,11 @@ namespace StringCalculator
                         arrayFromString = subInput.Split(delimiter).Select(n => Convert.ToInt32(n)).ToArray();
                     }
                 }
-                arrayFromString = subInput.Split(delimiter).Select(n => Convert.ToInt32(n)).ToArray();
+                // arrayFromString = subInput.Split(delimiter).Select(n => Convert.ToInt32(n)).ToArray();
             }
             else
             {
-                arrayFromString = input.Split(delimiterChars).Select(n => Convert.ToInt32(n)).ToArray();
+                arrayFromString = input.Split(defaultDelimiterChars).Select(n => Convert.ToInt32(n)).ToArray();
             }
             var negativeNumbers = new List<int>();
             var validNumbers = new List<int>();

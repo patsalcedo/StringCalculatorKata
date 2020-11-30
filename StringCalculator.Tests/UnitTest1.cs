@@ -149,5 +149,18 @@ namespace StringCalculator.Tests
             // THEN
             Assert.Equal(6, actual);
         }
+        
+        [Fact]
+        public void Allow_Varying_Length_Multiple_Delimiters()
+        {
+            // GIVEN
+            var calculator = new Calculator();
+            
+            // WHEN
+            var actual = calculator.Add("//[***][#][%]\n1***2#3%4");
+        
+            // THEN
+            Assert.Equal(10, actual);
+        }
     }
 }

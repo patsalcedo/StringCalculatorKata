@@ -14,26 +14,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9ce8d2f-1c42-4773-9d36-7ea6cad61f06" name="Default Changelist" comment="refactored and cleaned code">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.StringCalculator/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StringCalculator/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.StringCalculator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StringCalculator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/CalculatorTest.cs" afterDir="false" />
+    <list default="true" id="b9ce8d2f-1c42-4773-9d36-7ea6cad61f06" name="Default Changelist" comment="more refactoring, particularly the add method to reduce responsibilities">
+      <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/CalculatorTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/CalculatorTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/ref/StringCalculator.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/ref/StringCalculator.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/StringCalculator.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/StringCalculator.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/StringCalculator.Tests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/StringCalculator.Tests.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/StringCalculator.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/StringCalculator.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/StringCalculator.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/StringCalculator.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/ref/StringCalculator.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/ref/StringCalculator.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StringCalculator.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StringCalculator/Calculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator/Calculator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StringCalculator/bin/Debug/net5.0/StringCalculator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator/bin/Debug/net5.0/StringCalculator.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StringCalculator/bin/Debug/net5.0/StringCalculator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator/bin/Debug/net5.0/StringCalculator.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StringCalculator/obj/Debug/net5.0/StringCalculator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator/obj/Debug/net5.0/StringCalculator.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StringCalculator/obj/Debug/net5.0/StringCalculator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator/obj/Debug/net5.0/StringCalculator.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,8 +54,8 @@
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/StringCalculator.Tests/UnitTest1.cs" />
-        <option value="$PROJECT_DIR$/StringCalculator.Tests/CalculatorTest.cs" />
         <option value="$PROJECT_DIR$/StringCalculator/Calculator.cs" />
+        <option value="$PROJECT_DIR$/StringCalculator.Tests/CalculatorTest.cs" />
       </list>
     </option>
   </component>
@@ -142,7 +131,7 @@
       <workItem from="1606421696286" duration="3629000" />
       <workItem from="1606680250327" duration="18707000" />
       <workItem from="1606765132793" duration="6055000" />
-      <workItem from="1606780722666" duration="6038000" />
+      <workItem from="1606780722666" duration="6351000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1606702409265</created>
@@ -186,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606785393247</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="more refactoring, particularly the add method to reduce responsibilities">
+      <created>1606787001863</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1606787001863</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +210,8 @@
     <MESSAGE value="step 11 not working anymore after refactoring" />
     <MESSAGE value="all steps working" />
     <MESSAGE value="refactored and cleaned code" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored and cleaned code" />
+    <MESSAGE value="more refactoring, particularly the add method to reduce responsibilities" />
+    <option name="LAST_COMMIT_MESSAGE" value="more refactoring, particularly the add method to reduce responsibilities" />
   </component>
   <component name="WindowStateProjectService">
     <state width="486" height="464" key="DebuggerActiveHint" timestamp="1606700887436">

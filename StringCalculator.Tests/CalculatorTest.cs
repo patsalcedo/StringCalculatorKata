@@ -3,23 +3,23 @@ using Xunit;
 
 namespace StringCalculator.Tests
 {
-    public class UnitTest1
+    public class CalculatorTest
     {
-        // private readonly Calculator _calculator;
-        //
-        // public CalculatorTest
-        // {
-        //     
-        // }
+        private readonly Calculator _calculator;
+        
+        public CalculatorTest()
+        {
+            _calculator = new Calculator();
+        }
         
         [Fact] // step 1
         public void Return_Zero_To_Empty_String()
         {
             // GIVEN
-            var calculator = new Calculator();
+            // var calculator = new Calculator();
 
             // WHEN
-            var actual = calculator.Add("");
+            var actual = _calculator.Add("");
 
             // THEN
             Assert.Equal(0,actual);

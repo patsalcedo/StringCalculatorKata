@@ -27,6 +27,7 @@
       <e p="StringCalculator.sln" t="IncludeFlat" />
       <e p="StringCalculator.Tests" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="CalculatorTest.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="net5.0" t="Include">
@@ -35,7 +36,6 @@
           </e>
         </e>
         <e p="StringCalculator.Tests.csproj" t="IncludeRecursive" />
-        <e p="UnitTest1.cs" t="Include" />
       </e>
     </e>
   </component>

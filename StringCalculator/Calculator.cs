@@ -8,20 +8,22 @@ namespace StringCalculator
     {
         public int Add(string input)
         {
-            // CheckValidInput(input);
             if (string.IsNullOrEmpty(input))
             {
                 return 0;
             }
-            int[] arrayFromString;
-            string[] defaultDelimiterChars = {",","\n"};
+            var validNumbers = FindValidNumbers(ParseInputIntoArray(input)); // was arrayFromString
+            return validNumbers.Sum();
+        }
 
-            arrayFromString = HasCustomDelimiters(input)
+        private int[] ParseInputIntoArray(string input)
+        {
+            string[] defaultDelimiterChars = {",", "\n"};
+
+            var arrayFromString = HasCustomDelimiters(input)
                 ? GetArrayFromInputWithCustomDelimiters(input)
                 : CreateIntArrayFromInput(input, defaultDelimiterChars);
-            
-            var validNumbers = FindValidNumbers(arrayFromString);
-            return validNumbers.Sum();
+            return arrayFromString;
         }
 
         private bool HasCustomDelimiters(string input)

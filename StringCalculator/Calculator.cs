@@ -8,65 +8,36 @@ namespace StringCalculator
     {
         public int Add(string input)
         {
+            // CheckValidInput(input);
             if (string.IsNullOrEmpty(input))
             {
                 return 0;
             }
-            if (int.TryParse(input, out var inputAsNumber))
-            {
-                if (inputAsNumber < 0)
-                {
-                    throw new ArithmeticException("Negatives not allowed: " + input);
-                }
-                return inputAsNumber;
-            }
-
             int[] arrayFromString;
-            char[] defaultDelimiterChars = {',','\n'};
-            if (input.StartsWith("//"))
-            {
-                var subInput = "";
-                var delimiter = "";
-                var firstBracket = input.IndexOf("[", StringComparison.Ordinal);
-                if (firstBracket == -1) // no square brackets
-                {
-                    subInput = input.Substring(4);
-                    delimiter = input.Substring(2, 1);
-                    arrayFromString = subInput.Split(delimiter).Select(n => Convert.ToInt32(n)).ToArray();
-                }
-                else
-                {
-                    var data = input.ToList();
-                    if (data.Count(x => x == '[') > 1) // if there is more than one delimiter
-                    {
-                        var inputHalf = input.Split('\n');
-                        // var resultOfSplitToStr = string.Join("", resultOfBracketAndSlashSplit); 
-                        // var splitDelimiterFromData = resultOfSplitToStr.Split('\n');
-                        var delimiterAsString = inputHalf[0];
-                        var delimiters = delimiterAsString.Split(new char[]{'[',']','/'}, StringSplitOptions.RemoveEmptyEntries);
-                        // var dataStartIndex = input.IndexOf("\n", StringComparison.Ordinal);
-                        // subInput = input.Substring(dataStartIndex); // 1*2%3
-                        // subInput = splitDelimiterFromData[1];
-                        // defaultDelimiterChars = delimiterAsString.ToCharArray();
-                        arrayFromString = inputHalf[1]
-                            .Split(delimiters,StringSplitOptions.None)
-                            .Select(n => Convert.ToInt32(n)).ToArray();
-                    }
-                    else
-                    {
-                        var secondBracket = input.IndexOf("]", StringComparison.Ordinal);
-                        delimiter = input.Substring(firstBracket+1, (secondBracket - firstBracket -1));
-                        var dataStartIndex = input.IndexOf("\n", StringComparison.Ordinal);
-                        subInput = input.Substring(dataStartIndex);
-                        arrayFromString = subInput.Split(delimiter).Select(n => Convert.ToInt32(n)).ToArray();
-                    }
-                }
-                // arrayFromString = subInput.Split(delimiter).Select(n => Convert.ToInt32(n)).ToArray();
-            }
-            else
-            {
-                arrayFromString = input.Split(defaultDelimiterChars).Select(n => Convert.ToInt32(n)).ToArray();
-            }
+            string[] defaultDelimiterChars = {",","\n"};
+
+            arrayFromString = HasCustomDelimiters(input)
+                ? GetArrayFromInputWithCustomDelimiters(input)
+                : CreateIntArrayFromInput(input, defaultDelimiterChars);
+            
+            var validNumbers = FindValidNumbers(arrayFromString);
+            return validNumbers.Sum();
+        }
+
+        private bool HasCustomDelimiters(string input)
+        {
+            return input.StartsWith("//");
+        }
+
+        private static int[] GetArrayFromInputWithCustomDelimiters(string input)
+        {
+            var inputHalf = input.Split('\n'); 
+            var delimiters = inputHalf[0].Split(new[] {'[', ']', '/'}, StringSplitOptions.RemoveEmptyEntries);
+            return CreateIntArrayFromInput(inputHalf[1], delimiters);
+        }
+
+        private static List<int> FindValidNumbers(int[] arrayFromString)
+        {
             var negativeNumbers = new List<int>();
             var validNumbers = new List<int>();
             foreach (var num in arrayFromString)
@@ -83,11 +54,24 @@ namespace StringCalculator
             if (negativeNumbers.Any())
             {
                 var negNumList = string.Join(", ", negativeNumbers);
-                throw new ArithmeticException("Negatives not allowed: " + negNumList);
+                ThrowsNegativeNumberException(negNumList);
             }
-
             validNumbers.RemoveAll(n => n >= 1000);
-            return validNumbers.Sum();
+            return validNumbers;
+        }
+
+        private static void ThrowsNegativeNumberException(string input)
+        {
+            throw new ArithmeticException("Negatives not allowed: " + input);
+        }
+
+        private static int[] CreateIntArrayFromInput(string data, string[] delimiters)
+        {
+            var arrayFromString = data
+                .Split(delimiters, StringSplitOptions.None)
+                .Select(n => Convert.ToInt32(n))
+                .ToArray();
+            return arrayFromString;
         }
     }
 }

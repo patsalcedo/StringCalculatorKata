@@ -14,15 +14,22 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9ce8d2f-1c42-4773-9d36-7ea6cad61f06" name="Default Changelist" comment="more refactoring, particularly the add method to reduce responsibilities">
-      <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/CalculatorTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/CalculatorTest.cs" afterDir="false" />
+    <list default="true" id="b9ce8d2f-1c42-4773-9d36-7ea6cad61f06" name="Default Changelist" comment="cleaned up test code">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.StringCalculator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StringCalculator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/ref/StringCalculator.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/ref/StringCalculator.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/bin/Debug/net5.0/StringCalculator.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/StringCalculator.Tests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/StringCalculator.Tests.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/StringCalculator.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/StringCalculator.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/StringCalculator.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/StringCalculator.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/ref/StringCalculator.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator.Tests/obj/Debug/net5.0/ref/StringCalculator.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StringCalculator/Calculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator/Calculator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StringCalculator/bin/Debug/net5.0/StringCalculator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator/bin/Debug/net5.0/StringCalculator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StringCalculator/bin/Debug/net5.0/StringCalculator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator/bin/Debug/net5.0/StringCalculator.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StringCalculator/bin/Debug/net5.0/ref/StringCalculator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator/bin/Debug/net5.0/ref/StringCalculator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StringCalculator/obj/Debug/net5.0/StringCalculator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator/obj/Debug/net5.0/StringCalculator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StringCalculator/obj/Debug/net5.0/StringCalculator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator/obj/Debug/net5.0/StringCalculator.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StringCalculator/obj/Debug/net5.0/ref/StringCalculator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StringCalculator/obj/Debug/net5.0/ref/StringCalculator.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,24 +45,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/Patricia.Salcedo/RiderProjects/StringCalculator/StringCalculator/Calculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/735E84C3-457A-4CEB-8F18-E9435090DA17/10/fd448fde/ArithmeticException.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Patricia.Salcedo/RiderProjects/StringCalculator/StringCalculator/Calculator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Patricia.Salcedo/RiderProjects/StringCalculator/StringCalculator/Calculator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Patricia.Salcedo/RiderProjects/StringCalculator/StringCalculator/Calculator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Patricia.Salcedo/RiderProjects/StringCalculator/StringCalculator/Calculator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Patricia.Salcedo/RiderProjects/StringCalculator/StringCalculator/Calculator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Patricia.Salcedo/RiderProjects/StringCalculator/StringCalculator/Calculator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Patricia.Salcedo/RiderProjects/StringCalculator/StringCalculator/Calculator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Patricia.Salcedo/RiderProjects/StringCalculator/StringCalculator/Calculator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/StringCalculator.Tests/UnitTest1.cs" />
-        <option value="$PROJECT_DIR$/StringCalculator/Calculator.cs" />
         <option value="$PROJECT_DIR$/StringCalculator.Tests/CalculatorTest.cs" />
+        <option value="$PROJECT_DIR$/StringCalculator/Calculator.cs" />
       </list>
     </option>
   </component>
@@ -131,7 +129,8 @@
       <workItem from="1606421696286" duration="3629000" />
       <workItem from="1606680250327" duration="18707000" />
       <workItem from="1606765132793" duration="6055000" />
-      <workItem from="1606780722666" duration="6351000" />
+      <workItem from="1606780722666" duration="9759000" />
+      <workItem from="1606853227036" duration="2020000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1606702409265</created>
@@ -182,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606787001863</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="cleaned up test code">
+      <created>1606787285290</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1606787285290</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +217,8 @@
     <MESSAGE value="all steps working" />
     <MESSAGE value="refactored and cleaned code" />
     <MESSAGE value="more refactoring, particularly the add method to reduce responsibilities" />
-    <option name="LAST_COMMIT_MESSAGE" value="more refactoring, particularly the add method to reduce responsibilities" />
+    <MESSAGE value="cleaned up test code" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaned up test code" />
   </component>
   <component name="WindowStateProjectService">
     <state width="486" height="464" key="DebuggerActiveHint" timestamp="1606700887436">
@@ -362,21 +369,25 @@
     <state width="1638" height="462" key="GridCell.Tab.4.right/0.23.1680.947/879.-1057.1920.1057/-1041.-1057.1920.1057@0.23.1680.947" timestamp="1606706761493" />
     <state width="1638" height="462" key="GridCell.Tab.4.right/0.23.1680.949/879.-1057.1920.1057/-1041.-1057.1920.1057@0.23.1680.949" timestamp="1606706553098" />
     <state width="1638" height="462" key="GridCell.Tab.4.right/1680.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1606773869737" />
-    <state x="440" y="235" key="Rider.ProjectTemplateDialog.Size" timestamp="1606771403882">
+    <state x="440" y="235" key="Rider.ProjectTemplateDialog.Size" timestamp="1606792045130">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state x="440" y="235" key="Rider.ProjectTemplateDialog.Size/0.23.1680.947/879.-1057.1920.1057/-1041.-1057.1920.1057@0.23.1680.947" timestamp="1606355250532" />
-    <state x="440" y="235" key="Rider.ProjectTemplateDialog.Size/1680.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1606771403882" />
+    <state x="440" y="235" key="Rider.ProjectTemplateDialog.Size/1680.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1606792045130" />
     <state x="341" y="135" key="SettingsEditor" timestamp="1606703031106">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state x="341" y="135" key="SettingsEditor/0.23.1680.947/879.-1057.1920.1057/-1041.-1057.1920.1057@0.23.1680.947" timestamp="1606703031106" />
-    <state x="440" y="236" key="Vcs.Push.Dialog.v2" timestamp="1606773857801">
+    <state x="100" y="123" width="1480" height="747" key="VCS.FileHistoryDialog" timestamp="1606858867147">
+      <screen x="0" y="23" width="1680" height="947" />
+    </state>
+    <state x="100" y="123" width="1480" height="747" key="VCS.FileHistoryDialog/0.23.1680.947/879.-1057.1920.1057/-1041.-1057.1920.1057@0.23.1680.947" timestamp="1606858867147" />
+    <state x="440" y="236" key="Vcs.Push.Dialog.v2" timestamp="1606787294497">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state x="440" y="236" key="Vcs.Push.Dialog.v2/0.23.1680.947/879.-1057.1920.1057/-1041.-1057.1920.1057@0.23.1680.947" timestamp="1606704185123" />
     <state x="440" y="236" key="Vcs.Push.Dialog.v2/0.23.1680.949/879.-1057.1920.1057/-1041.-1057.1920.1057@0.23.1680.949" timestamp="1606706596048" />
-    <state x="440" y="236" key="Vcs.Push.Dialog.v2/1680.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1606773857801" />
+    <state x="440" y="236" key="Vcs.Push.Dialog.v2/1680.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1606787294497" />
     <state width="840" height="473" key="XDebugger.FullValuePopup" timestamp="1606698625488">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>

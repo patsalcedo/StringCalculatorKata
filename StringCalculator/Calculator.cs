@@ -18,11 +18,9 @@ namespace StringCalculator
 
         private int[] ParseInputIntoArray(string input)
         {
-            string[] defaultDelimiterChars = {",", "\n"};
-
             var arrayFromString = HasCustomDelimiters(input)
                 ? GetArrayFromInputWithCustomDelimiters(input)
-                : CreateIntArrayFromInput(input, defaultDelimiterChars);
+                : GetArrayFromInputWithDefaultDelimiters(input);
             return arrayFromString;
         }
 
@@ -36,6 +34,12 @@ namespace StringCalculator
             var inputHalf = input.Split('\n'); 
             var delimiters = inputHalf[0].Split(new[] {'[', ']', '/'}, StringSplitOptions.RemoveEmptyEntries);
             return CreateIntArrayFromInput(inputHalf[1], delimiters);
+        }
+        
+        private static int[] GetArrayFromInputWithDefaultDelimiters(string input)
+        {
+            string[] defaultDelimiterChars = {",", "\n"};
+            return CreateIntArrayFromInput(input, defaultDelimiterChars);
         }
 
         private static List<int> FindValidNumbers(int[] arrayFromString)
@@ -56,15 +60,10 @@ namespace StringCalculator
             if (negativeNumbers.Any())
             {
                 var negNumList = string.Join(", ", negativeNumbers);
-                ThrowsNegativeNumberException(negNumList);
+                throw new ArithmeticException("Negatives not allowed: " + negNumList);
             }
             validNumbers.RemoveAll(n => n >= 1000);
             return validNumbers;
-        }
-
-        private static void ThrowsNegativeNumberException(string input)
-        {
-            throw new ArithmeticException("Negatives not allowed: " + input);
         }
 
         private static int[] CreateIntArrayFromInput(string data, string[] delimiters)
